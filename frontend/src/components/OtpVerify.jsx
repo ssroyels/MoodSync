@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const OTPVerify = () => {
-  const [otp, setOtp] = useState('');
+  const [otp, setOtp] = useState("");
   const [darkMode, setDarkMode] = useState(true);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ const OTPVerify = () => {
   }, []);
 
   const handleVerify = async () => {
-    const signupData = JSON.parse(localStorage.getItem('User'));
+    const signupData = JSON.parse(localStorage.getItem("User"));
 
     if (!signupData || !signupData.email) {
       alert("Signup data not found. Please signup again.");
@@ -31,16 +31,22 @@ const OTPVerify = () => {
     }
 
     try {
-      const response = await axios.post("https://moodsync-fgs9.onrender.com/User/verifyOtp", {
-        email: signupData.email,
-        otp
-      },{ withCredentials: true
-});
-
-      alert("✅ Account created successfully!");
+      const response = await axios.post(
+        "https://moodsync-fgs9.onrender.com/User/verifyOtp",
+        {
+          email: signupData.email,
+          otp,
+        },
+        { withCredentials: true }
+      ).then(() => {
+ alert("✅ Account created successfully!");
       console.log("User created:", response.data);
       // localStorage.removeItem("signupData");
       navigate("/login");
+
+      })
+
+     
     } catch (error) {
       console.error("❌ OTP Verification Error:", error);
       alert(
