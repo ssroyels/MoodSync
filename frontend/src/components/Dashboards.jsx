@@ -14,7 +14,7 @@ const Dashboard = () => {
   useEffect(() => {
     if (user?.email) {
       axios
-        .get(`http://localhost:4000/mood/history/${user.email}`)
+        .get(`https://mood-sync-one.vercel.app/mood/history/${user.email}`)
         .then((res) => {
           const history = res.data.reverse();
           setMoodHistory(history);

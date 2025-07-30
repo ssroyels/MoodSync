@@ -9,7 +9,7 @@ export default function Login() {
   const navigate = useNavigate();
   const SubmitHandler = async (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:4000/User/login",{email,password})
+    await axios.post("https://mood-sync-one.vercel.app/User/login",{email,password})
     .then(
       () => {
         

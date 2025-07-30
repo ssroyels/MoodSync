@@ -99,7 +99,7 @@ const FaceScan = () => {
 
   const saveExpressionToDB = async (mood1) => {
     try {
-      await axios.post("http://localhost:4000/mood/save", {
+      await axios.post("https://mood-sync-one.vercel.app/mood/save", {
         userId: user?.email,
         mood: mood1,
       });

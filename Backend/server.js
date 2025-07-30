@@ -11,7 +11,9 @@ const app = express();
 dotenv.config(); 
 
 app.use(express.json()); 
-app.use(cors())
+app.use(cors({
+  origin:"https://mood-sync-in5r.vercel.app/"
+}))
 app.use(express.urlencoded({ extended: true }));
 
 // For parsing application/json

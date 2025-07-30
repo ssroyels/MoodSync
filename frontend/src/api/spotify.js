@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const getAccessToken = async () => {
-  const res = await axios.post('http://localhost:4000/Music/get-token');
+  const res = await axios.post('https://mood-sync-one.vercel.app/Music/get-token');
   return res.data.token;
 };
 
