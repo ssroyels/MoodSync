@@ -37,13 +37,13 @@ const FaceScan = () => {
     const loadModels = async () => {
       const MODEL_URL = "/models/face-api.js-models";
       await faceapi.nets.tinyFaceDetector.loadFromUri(
-        `${MODEL_URL}/tiny_face_detector`
+        `/models/face-api.js-models/tiny_face_detector`
       );
       await faceapi.nets.faceLandmark68Net.loadFromUri(
-        `${MODEL_URL}/face_landmark_68`
+        `/models/face-api.js-models/face_landmark_68`
       );
       await faceapi.nets.faceExpressionNet.loadFromUri(
-        `${MODEL_URL}/face_expression`
+        `/models/face-api.js-models/face_expression`
       );
       startVideo();
     };
