@@ -41,6 +41,6 @@ app.use("/Music",spotify);
 app.use("/songs", songRoutes);
 
 
-app.listen(PORT, () => {
+app.listen(4000, () => {
   console.log(`Server is running on port ${PORT}`);
 });
