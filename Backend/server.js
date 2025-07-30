@@ -29,8 +29,12 @@ const PORT = process.env.PORT || 5000;
 
 mongoose.connect(process.env.MONGOURI).then(() => console.log("MongoDB Connected successfully"))
 .catch((err) => console.log(err))
+app.get('/', (req, res) => {
+  res.send('MoodSync Backend is Live!');
+});
 
 app.use("/User",UserRoutes)
+
 app.use("/mood",HistoryRoutes);
 app.use("/lastmood",LastMoodRoutes)
 app.use("/Music",spotify);
