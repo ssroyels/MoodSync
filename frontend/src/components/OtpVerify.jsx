@@ -31,7 +31,7 @@ const OTPVerify = () => {
     }
 
     try {
-      const response = await axios.post("https://mood-sync-one.vercel.app/User/verifyOtp", {
+      const response = await axios.post("https://moodsync-fgs9.onrender.com/User/verifyOtp", {
         email: signupData.email,
         otp
       },{ withCredentials: true

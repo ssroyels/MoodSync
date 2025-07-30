@@ -10,7 +10,7 @@ export default function Login() {
     e.preventDefault();
     await axios
       .post(
-        "https://mood-sync-one.vercel.app/User/login",
+        "https://moodsync-fgs9.onrender.com/User/login",
         { email, password },
         { withCredentials: true }
       )

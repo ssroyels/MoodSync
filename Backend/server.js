@@ -13,7 +13,7 @@ dotenv.config();
 app.use(express.json()); 
 
 app.use(cors({
-  origin: 'https://mood-sync-in5r.vercel.app',
+  origin: 'https://moodsync-1-oga6.onrender.com',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   credentials: true, // if you're using cookies or auth headers
 }));
