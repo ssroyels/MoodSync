@@ -11,7 +11,8 @@ export default function Signup() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("https://mood-sync-one.vercel.app/User/register", { username, email, password })
+      .post("https://mood-sync-one.vercel.app/User/register", { username, email, password },{ withCredentials: true
+})
       .then(() => {
         // ✅ Correct way to store multiple values in localStorage
         localStorage.setItem("User", JSON.stringify({ email, username }));

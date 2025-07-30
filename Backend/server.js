@@ -12,7 +12,9 @@ dotenv.config();
 
 app.use(express.json()); 
 app.use(cors({
-  origin:"https://mood-sync-in5r.vercel.app/"
+  origin:"https://mood-sync-in5r.vercel.app",
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  credentials: true
 }))
 app.use(express.urlencoded({ extended: true }));
 

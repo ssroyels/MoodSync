@@ -1,36 +1,40 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios"
-
+import axios from "axios";
 
 export default function Login() {
-  const [email,setEmail] = useState("");
-  const [password,setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const SubmitHandler = async (e) => {
     e.preventDefault();
-    await axios.post("https://mood-sync-one.vercel.app/User/login",{email,password})
-    .then(
-      () => {
-        
-        console.log("User Login Successfully!")
-        setEmail("")
-        setPassword("")
-        navigate("/Dashboard")
-      }
-
-    )
-    .catch((err) => {
-      console.log(err);
-    })
-
-
-  }
+    await axios
+      .post(
+        "https://mood-sync-one.vercel.app/User/login",
+        { email, password },
+        { withCredentials: true }
+      )
+      .then(() => {
+        console.log("User Login Successfully!");
+        setEmail("");
+        setPassword("");
+        navigate("/Dashboard");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-tr from-purple-900 via-black to-gray-900 text-white px-4">
       <div className="bg-white/10 backdrop-blur-xl p-8 rounded-3xl shadow-xl w-full max-w-md">
         <div className="flex justify-center mb-6">
-          <img src={"https://i.pinimg.com/originals/7c/d5/3d/7cd53d36d121d839da9600ca055b01db.gif"} alt="mood" className="w-20 h-20 rounded-full" />
+          <img
+            src={
+              "https://i.pinimg.com/originals/7c/d5/3d/7cd53d36d121d839da9600ca055b01db.gif"
+            }
+            alt="mood"
+            className="w-20 h-20 rounded-full"
+          />
         </div>
         <h2 className="text-3xl font-bold text-center mb-4">Welcome Back</h2>
         <p className="text-center text-gray-300 mb-6">Login to MoodSync</p>
@@ -69,4 +73,3 @@ export default function Login() {
     </div>
   );
 }
-

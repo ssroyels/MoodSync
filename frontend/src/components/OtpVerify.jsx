@@ -34,7 +34,8 @@ const OTPVerify = () => {
       const response = await axios.post("https://mood-sync-one.vercel.app/User/verifyOtp", {
         email: signupData.email,
         otp
-      });
+      },{ withCredentials: true
+});
 
       alert("✅ Account created successfully!");
       console.log("User created:", response.data);

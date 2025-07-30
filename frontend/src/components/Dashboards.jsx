@@ -1,20 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import { FaSearch, FaUserCircle, FaPlay } from 'react-icons/fa';
-import { motion } from 'framer-motion';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
-import SuggestedMusic from './SuggestedMusic';
+import React, { useEffect, useState } from "react";
+import { FaSearch, FaUserCircle, FaPlay } from "react-icons/fa";
+import { motion } from "framer-motion";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import SuggestedMusic from "./SuggestedMusic";
 
 const Dashboard = () => {
   const [moodHistory, setMoodHistory] = useState([]);
   const [lastMood, setLastMood] = useState(null);
 
-  const user = JSON.parse(localStorage.getItem('User'));
+  const user = JSON.parse(localStorage.getItem("User"));
 
   useEffect(() => {
     if (user?.email) {
       axios
-        .get(`https://mood-sync-one.vercel.app/mood/history/${user.email}`)
+        .get(`https://mood-sync-one.vercel.app/mood/history/${user.email}`, {
+          withCredentials: true,
+        })
         .then((res) => {
           const history = res.data.reverse();
           setMoodHistory(history);
@@ -28,7 +30,6 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#0d0d0d] to-[#1a1a1a] text-white font-sans">
-      
       {/* Navbar */}
       <nav className="flex flex-col md:flex-row items-center justify-between px-6 py-4 bg-black bg-opacity-30 backdrop-blur-md shadow-md gap-4">
         <motion.h1
@@ -56,7 +57,7 @@ const Dashboard = () => {
           </button>
           <div className="flex items-center gap-2 text-white text-sm font-medium">
             <FaUserCircle className="text-xl" />
-            <span>{user?.username || 'User'}</span>
+            <span>{user?.username || "User"}</span>
           </div>
         </div>
       </nav>
@@ -64,7 +65,8 @@ const Dashboard = () => {
       {/* Dashboard Section */}
       <main className="p-6">
         <h2 className="text-3xl font-bold mb-6 text-center md:text-left">
-          Welcome, <span className="text-purple-400">{user?.name || "Guest"}</span> 👋
+          Welcome,{" "}
+          <span className="text-purple-400">{user?.name || "Guest"}</span> 👋
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
@@ -76,8 +78,10 @@ const Dashboard = () => {
             className="bg-[#1f1f1f] p-6 rounded-2xl shadow-lg text-center"
           >
             <h3 className="text-lg font-semibold mb-2">Last Detected Mood</h3>
-            <div className="text-6xl mb-2">{lastMood?.emoji || '🤖'}</div>
-            <p className="text-xl font-medium capitalize">{lastMood?.mood || 'Unknown'}</p>
+            <div className="text-6xl mb-2">{lastMood?.emoji || "🤖"}</div>
+            <p className="text-xl font-medium capitalize">
+              {lastMood?.mood || "Unknown"}
+            </p>
           </motion.div>
 
           {/* Face Detect Button */}
@@ -111,7 +115,10 @@ const Dashboard = () => {
                     key={index}
                     className="flex justify-between text-sm border-b border-gray-600 pb-1"
                   >
-                    <span>{entry.emoji} {new Date(entry.detectedAt).toLocaleDateString()}</span>
+                    <span>
+                      {entry.emoji}{" "}
+                      {new Date(entry.detectedAt).toLocaleDateString()}
+                    </span>
                     <span className="capitalize">{entry.mood}</span>
                   </li>
                 ))
@@ -140,12 +147,15 @@ const Dashboard = () => {
             About <span className="text-purple-400">MoodSync</span>
           </h3>
           <p className="text-base">
-            MoodSync is your AI-powered emotional wellness companion. By analyzing your facial expressions,
-            MoodSync understands your moods and helps you improve your day with personalized content, music,
-            and more.
+            MoodSync is your AI-powered emotional wellness companion. By
+            analyzing your facial expressions, MoodSync understands your moods
+            and helps you improve your day with personalized content, music, and
+            more.
           </p>
           <p className="italic text-sm">
-            Developed with ❤️ by <span className="text-white font-semibold">Satyam Singh</span> — 2025
+            Developed with ❤️ by{" "}
+            <span className="text-white font-semibold">Satyam Singh</span> —
+            2025
           </p>
         </motion.div>
       </footer>
@@ -154,4 +164,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-
