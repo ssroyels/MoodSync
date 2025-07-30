@@ -35,7 +35,7 @@ const FaceScan = () => {
 
   useEffect(() => {
     const loadModels = async () => {
-      const MODEL_URL = "/models/face-api.js-models";
+      const MODEL_URL = "https://justadudewhohacks.github.io/face-api.js/models/face-api.js-models";
       await faceapi.nets.tinyFaceDetector.loadFromUri(
         `${MODEL_URL}/tiny_face_detector`
       );
