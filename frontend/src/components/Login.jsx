@@ -15,6 +15,7 @@ export default function Login() {
         { withCredentials: true }
       )
       .then((res) => {
+        console.log(res.data);
         localStorage.setItem("User", JSON.stringify(res.data.user));
 
         alert("User login Successfully!");
