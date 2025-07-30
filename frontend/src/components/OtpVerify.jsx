@@ -41,7 +41,7 @@ const OTPVerify = () => {
       ).then(() => {
  alert("✅ Account created successfully!");
       console.log("User created:", response.data);
-      // localStorage.removeItem("signupData");
+       localStorage.removeItem("User");
       navigate("/login");
 
       })

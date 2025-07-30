@@ -130,6 +130,25 @@ export const loginController = async (req, res) => {
     res.status(200).json({ user: userData, token });
   } catch (err) {
     console.log("❌ Error in loginController:", err);
-    res.status(500).json({ msg: "Server error" });
+    res.status(500).json({ msg: err });
   }
 };
+
+// export const fetchController = async (req,res) => {
+
+
+//   try{
+//      const { email, password } = req.body;
+
+//     const user = await User.findOne({ email }).select("+password");
+
+//     if(user) {
+//       return res.status(200).json(user);
+//     }
+   
+
+//   } catch(err) {
+//     res.status(500).json({msg:err});
+//   }
+
+// }
