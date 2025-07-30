@@ -35,15 +35,15 @@ const FaceScan = () => {
 
   useEffect(() => {
     const loadModels = async () => {
-      const MODEL_URL = "/models/face-api.js-models";
+      // const MODEL_URL = "/models/face-api.js-models";
       await faceapi.nets.tinyFaceDetector.loadFromUri(
-        `/models/face-api.js-models/tiny_face_detector`
+        `https://github.com/justadudewhohacks/face-api.js-models.git/tiny_face_detector`
       );
       await faceapi.nets.faceLandmark68Net.loadFromUri(
-        `/models/face-api.js-models/face_landmark_68`
+        `https://github.com/justadudewhohacks/face-api.js-models.git/face_landmark_68`
       );
       await faceapi.nets.faceExpressionNet.loadFromUri(
-        `/models/face-api.js-models/face_expression`
+        `https://github.com/justadudewhohacks/face-api.js-models.git/face_expression`
       );
       startVideo();
     };
