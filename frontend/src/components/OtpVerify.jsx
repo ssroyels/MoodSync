@@ -31,22 +31,21 @@ const OTPVerify = () => {
     }
 
     try {
-      const response = await axios.post(
-        "https://moodsync-fgs9.onrender.com/User/verifyOtp",
-        {
-          email: signupData.email,
-          otp,
-        },
-        { withCredentials: true }
-      ).then(() => {
- alert("✅ Account created successfully!");
-      console.log("User created:", response.data);
-       localStorage.removeItem("User");
-      navigate("/login");
-
-      })
-
-     
+      const response = await axios
+        .post(
+          "https://moodsync-fgs9.onrender.com/User/verifyOtp",
+          {
+            email: signupData.email,
+            otp,
+          },
+          { withCredentials: true }
+        )
+        .then(() => {
+          alert("✅ Account created successfully!");
+          // console.log("User created:", response.data);
+          localStorage.removeItem("User");
+          navigate("/login");
+        });
     } catch (error) {
       console.error("❌ OTP Verification Error:", error);
       alert(

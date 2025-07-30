@@ -16,6 +16,7 @@ export default function Login() {
       )
       .then((res) => {
         localStorage.setItem("User",res.data.user);
+        alert("User login Successfully!");
         console.log("User Login Successfully!");
         setEmail("");
         setPassword("");
