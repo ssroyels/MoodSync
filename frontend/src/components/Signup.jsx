@@ -15,7 +15,7 @@ export default function Signup() {
 })
       .then(() => {
         // ✅ Correct way to store multiple values in localStorage
-        localStorage.setItem("User", JSON.stringify({ email, username }));
+        localStorage.setItem("UserData", JSON.stringify({ email, username }));
 
         setEmail("");
         setUsername("");

@@ -22,7 +22,7 @@ const OTPVerify = () => {
   }, []);
 
   const handleVerify = async () => {
-    const signupData = JSON.parse(localStorage.getItem("User"));
+    const signupData = JSON.parse(localStorage.getItem("UserData"));
 
     if (!signupData || !signupData.email) {
       alert("Signup data not found. Please signup again.");
@@ -43,7 +43,7 @@ const OTPVerify = () => {
         .then(() => {
           alert("✅ Account created successfully!");
           // console.log("User created:", response.data);
-          localStorage.removeItem("User");
+          localStorage.removeItem("UserData");
           navigate("/login");
         });
     } catch (error) {
