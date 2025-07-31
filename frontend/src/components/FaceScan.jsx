@@ -59,7 +59,7 @@ const FaceScan = () => {
         });
     };
 
-    loadModels();
+    loadModels()
 
     return () => {
       if (videoRef.current?.srcObject) {
